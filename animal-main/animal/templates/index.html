@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Classifier</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>동물 이미지 분류기</h1>
+    <form id="upload-form" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" id="image" required>
+        <input type="submit" value="분류하기">
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function(){
+            $('#upload-form').on('submit', function(e){
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: '/upload',
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(data){
+                        $('#result').html('<p>예측된 클래스: ' + data.prediction + '</p>');
+                    },
+                    error: function(data){
+                        $('#result').html('<p>에러 발생</p>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

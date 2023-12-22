@@ -1,0 +1,16 @@
+0 dog
+1 dolphin
+2 duck
+3 elephant
+4 fox
+5 goldfish
+6 horse
+7 lion
+8 mouse
+9 ox
+10 pig
+11 sheep
+12 snake
+13 swan
+14 wolf
+15 zebra
